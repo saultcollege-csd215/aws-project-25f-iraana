@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
 
 # AWS CLI and SAM CLI
 RUN apt-get update && apt-get install -y \
-    awscli \
+    awscli unzip curl \
     && curl -L https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip -o aws-sam-cli.zip \
     && unzip aws-sam-cli.zip -d sam-installation \
     && ./sam-installation/install \
@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y \
 
 # Install Terraform
 RUN apt-get update && apt-get install -y \
-    gnupg \
+    gnupg lsb-release wget curl \
+    && apt-get install -y software-properties-common || true \
     software-properties-common \
     && wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg \
     && echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list \
