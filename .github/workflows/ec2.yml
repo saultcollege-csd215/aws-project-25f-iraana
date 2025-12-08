@@ -24,4 +24,7 @@ jobs:
           host: ${{ secrets.EC2_PUBLIC_IP }}
           username: ec2-user
           key: ${{ secrets.EC2_KEY }}
-          script: ./resources/deploy_ec2.sh
+          port: 22
+          commands: |
+            chmod +x /home/ec2-user/aws-project/resources/deploy_ec2.sh
+            /home/ec2-user/aws-project/resources/deploy_ec2.sh
