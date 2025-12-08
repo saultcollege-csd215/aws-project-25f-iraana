@@ -28,13 +28,13 @@ jobs:
         run: pytest tests
 
       - name: Dispatch EC2 deploy workflow
-        uses: peter-evans/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: ec2.yml
           ref: 'aws-project'
       
       - name: Dispatch Lambda deploy workflow
-        uses: peter-evans/workflow-dispatch@v1
+        uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: lambda.yml
           ref: 'aws-project'
