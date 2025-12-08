@@ -18,14 +18,23 @@ jobs:
         with:
           ref: 'aws-project'
 
-      - name: Make deploy script executable
-        run: chmod +x ./resources/deploy_ec2.sh
+      - name: Copy deploy script to EC2
+        uses: appleboy/scp-action@v0.1.3
+        with:
+          host: ${{ secrets.EC2_PUBLIC_IP }}
+          username: ec2-user
+          key: ${{ secrets.EC2_KEY }}
+          port: 22
+          source: ./resources/deploy_ec2.sh
+          target: /home/ec2-user/deploy_ec2.sh
 
-      - name: Deploy to EC2
+      - name: Run deploy script on EC2
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_PUBLIC_IP }}
           username: ec2-user
           key: ${{ secrets.EC2_KEY }}
           port: 22
-          script: ./resources/deploy_ec2.sh
+          script: |
+            chmod +x /home/ec2-user/deploy_ec2.sh
+            /home/ec2-user/deploy_ec2.sh
