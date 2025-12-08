@@ -1,1 +1,4 @@
 name: Lambda deployment
+
+on:
+  workflow_dispatch:
