@@ -33,8 +33,6 @@ zip -r9 ../$ZIP_FILE ./* -x "*.git*" -x "*.DS_Store" > /dev/null
 cd ..
 
 echo "[4/4] Deploying to AWS Lambda..."
-aws lambda update-function-code \
-    --function-name $LAMBDA_NAME \
-    --zip-file fileb://$ZIP_FILE
+aws lambda update-function-code --function-name $LAMBDA_NAME --zip-file fileb://$ZIP_FILE --region $REGION
 
 echo "--- Deployment completed for $LAMBDA_NAME ---"
