@@ -21,7 +21,8 @@ def main(event, context):
             "Dice have been used since ancient times for gaming and divination.",
             "The oldest known dice were excavated from a site in Mesopotamia and date back to 3000 BC.",
             "A standard die has six faces, numbered from 1 to 6.",
-            "The probability of rolling any specific number on a fair six-sided die is 1/6."
+            "The probability of rolling any specific number on a fair six-sided die is 1/6.",
+            "Dice are commonly used in board games, role-playing games, and gambling."
         ]
         return response(200, {"facts": facts})
 
