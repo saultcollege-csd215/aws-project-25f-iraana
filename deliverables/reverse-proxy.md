@@ -1,0 +1,3 @@
+We use Nginx as a reverse proxy in front of our app. It works like a middleman between the user and the app, a reverse proxy receives requests from users and forwards them to another server. So, when user types EC2 public IP in the browser Nginx receives the request and passes it to the app running on port 8000. 
+
+The benefits are that it makes the app easier to access, users don’t need to type a port number, they just use the public IP. It increases security because users don't access app directly and also Nginx can handle multiple incoming requests efficiently. Nginx also allows to add extra features like HTTPS, caching, and load balancing without changing the code.
