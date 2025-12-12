@@ -15,6 +15,15 @@ def main(event, context):
     
     if path == '/hello':
         return response(200, {"message": "Hello, World!"})
+    
+    if path == '/facts':
+        facts = [
+            "Dice have been used since ancient times for gaming and divination.",
+            "The oldest known dice were excavated from a site in Mesopotamia and date back to 3000 BC.",
+            "A standard die has six faces, numbered from 1 to 6.",
+            "The probability of rolling any specific number on a fair six-sided die is 1/6."
+        ]
+        return response(200, {"facts": facts})
 
     if path == '/random':
         return response(200, {"random_number": core.rand100()})
